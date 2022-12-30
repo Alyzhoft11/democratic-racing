@@ -1,6 +1,7 @@
 import {
   ArrowDownIcon,
   ArrowUpIcon,
+  ChatBubbleBottomCenterIcon,
   TrashIcon,
 } from "@heroicons/react/24/outline";
 import { useSession } from "next-auth/react";
@@ -202,26 +203,38 @@ export default function Card({ forum, ...props }: Props) {
             </div>
             <p className=" text-gray-500">{forum.text}</p>
           </div>
-          <div className="flex flex-1 items-center space-x-2 ">
-            {forum.user.image && (
-              <Image
-                src={forum.user.image}
-                height={24}
-                width={24}
-                className="rounded-full"
-                alt="User Image"
-              />
-            )}
+          <div className="flex flex-1 items-center justify-between space-x-2 ">
+            <div className="flex space-x-2">
+              {forum.user.image && (
+                <Image
+                  src={forum.user.image}
+                  height={24}
+                  width={24}
+                  className="rounded-full"
+                  alt="User Image"
+                />
+              )}
 
-            <p>
-              Posted By:
-              <span>
-                {" "}
-                <a href="" className="text-blue-600 hover:underline">
-                  {forum.user.name}
-                </a>
-              </span>
-            </p>
+              <p>
+                Posted By:
+                <span>
+                  {" "}
+                  <button>
+                    <a href="" className="text-blue-600 hover:underline">
+                      {forum.user.name}
+                    </a>
+                  </button>
+                </span>
+              </p>
+            </div>
+
+            <div className=" text-slate-500">
+              Created: {forum.createdAt.toDateString()}
+            </div>
+            <div className="flex">
+              <ChatBubbleBottomCenterIcon className="h-6 w-6" />
+              {forum.ForumComment.length}
+            </div>
           </div>
         </div>
       </div>

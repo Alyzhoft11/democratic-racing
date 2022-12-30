@@ -37,7 +37,6 @@ export default function Home() {
 
         <section className="w-1/4">
           <div className="flex justify-end">
-            <div>Testing Lint</div>
             <Button
               className=" mx-4 w-full rounded-md bg-green-400 p-4 shadow-lg hover:bg-green-500 hover:shadow-xl"
               onClick={() => setOpen(true)}
