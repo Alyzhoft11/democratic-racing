@@ -25,7 +25,13 @@ export default function Home() {
       <div className="flex ">
         <main className=" flex w-full flex-1 flex-col items-center space-y-2">
           {data?.map((forum) => {
-            return <Card key={forum.id} forum={forum} />;
+            return (
+              <Card
+                key={forum.id}
+                forum={forum}
+                onClick={() => console.log("clicked")}
+              />
+            );
           })}
         </main>
 

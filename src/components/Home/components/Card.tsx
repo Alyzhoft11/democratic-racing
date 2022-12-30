@@ -63,13 +63,14 @@ export default function Card({ forum, ...props }: Props) {
 
   return (
     <div
-      className="relative flex h-64 w-4/5 justify-start rounded-lg border-2 bg-white p-4 shadow-md "
+      className="relative flex h-64 w-4/5 cursor-pointer justify-start rounded-lg border-2 bg-white p-4 shadow-md hover:shadow-xl"
       {...props}
     >
       {session.data?.user?.id === forum.user.id && (
         <div className="absolute right-5">
           <button
-            onClick={() =>
+            onClick={(event) => {
+              event.stopPropagation();
               mutate(
                 { id: forum.id },
                 {
@@ -77,8 +78,8 @@ export default function Card({ forum, ...props }: Props) {
                     utils.forum.getAll.invalidate();
                   },
                 }
-              )
-            }
+              );
+            }}
           >
             <TrashIcon className="h-6 w-6 hover:shadow-md" />
           </button>
@@ -88,7 +89,8 @@ export default function Card({ forum, ...props }: Props) {
       <div className=" flex w-full">
         <div className=" flex w-1/12 flex-col items-center space-y-2 ">
           <button
-            onClick={() => {
+            onClick={(event) => {
+              event.stopPropagation();
               const vote = getVoted();
 
               if (vote) {
@@ -146,7 +148,8 @@ export default function Card({ forum, ...props }: Props) {
             {getVoteCount()}
           </div>
           <button
-            onClick={() => {
+            onClick={(event) => {
+              event.stopPropagation();
               const vote = getVoted();
               if (vote) {
                 if (vote.downVote === false) {
