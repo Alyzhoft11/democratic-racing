@@ -1,4 +1,4 @@
-import { router, protectedProcedure } from "../trpc";
+import { protectedProcedure, router } from "../trpc";
 
 export const UserRouter = router({
   getUser: protectedProcedure.query(({ ctx }) => {

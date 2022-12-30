@@ -1,11 +1,11 @@
 import type {
-  Poll,
-  Vote,
-  Response,
-  User,
   ForumComment,
   ForumPost,
   ForumVote,
+  Poll,
+  Response,
+  User,
+  Vote,
 } from "@prisma/client";
 
 export type GetAllPolls = Poll & {

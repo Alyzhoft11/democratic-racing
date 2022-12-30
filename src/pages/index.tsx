@@ -1,4 +1,4 @@
-import { useSession, signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
 
 const Main = dynamic(() => import("../components/Home"), {

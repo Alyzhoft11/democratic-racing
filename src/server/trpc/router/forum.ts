@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { router, protectedProcedure } from "../trpc";
+import { protectedProcedure, router } from "../trpc";
 
 export const ForumRouter = router({
   getAll: protectedProcedure.query(({ ctx }) => {
