@@ -1,16 +1,18 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import clsx from "clsx";
 
 interface Props {
   open: boolean;
   setOpen: (open: boolean) => void;
   children: React.ReactNode;
+  size: string;
 }
 
-export default function Modal({ open, setOpen, children }: Props) {
+export default function Modal({ open, setOpen, children, size }: Props) {
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={setOpen}>
+      <Dialog as="div" className="relative z-10 " onClose={setOpen}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -34,7 +36,13 @@ export default function Modal({ open, setOpen, children }: Props) {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+              <Dialog.Panel
+                as="div"
+                className={clsx(
+                  "relative w-full transform overflow-hidden rounded-lg bg-white px-4  pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6",
+                  size
+                )}
+              >
                 <div>{children}</div>
               </Dialog.Panel>
             </Transition.Child>

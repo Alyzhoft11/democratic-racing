@@ -30,6 +30,7 @@ export default function AddForum({ open, setOpen }: Props) {
           form.reset();
           setOpen(open);
         }}
+        size="lg:max-w-4xl"
       >
         <Form
           form={form}
