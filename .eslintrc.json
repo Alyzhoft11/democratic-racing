@@ -9,7 +9,7 @@
     "@typescript-eslint/consistent-type-imports": 1,
     "no-console": [1, { "allow": ["warn", "error"] }],
     "sort-imports": [
-      2,
+      1,
       {
         "ignoreDeclarationSort": true
       }
