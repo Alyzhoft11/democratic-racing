@@ -118,4 +118,29 @@ export const ForumRouter = router({
         },
       });
     }),
+
+  getComments: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .query(({ ctx, input }) => {
+      return ctx.prisma.forumComment.findMany({
+        where: {
+          forumPostId: input.id,
+        },
+        include: {
+          user: true,
+        },
+      });
+    }),
+
+  createComment: protectedProcedure
+    .input(z.object({ text: z.string(), forumId: z.string() }))
+    .mutation(({ ctx, input }) => {
+      return ctx.prisma.forumComment.create({
+        data: {
+          text: input.text,
+          forumPostId: input.forumId,
+          userId: ctx.session.user.id,
+        },
+      });
+    }),
 });

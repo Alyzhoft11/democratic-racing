@@ -25,3 +25,7 @@ export type TForum = ForumPost & {
   //   ForumVote: number;
   // };
 };
+
+export type TComment = ForumComment & {
+  user: User;
+};

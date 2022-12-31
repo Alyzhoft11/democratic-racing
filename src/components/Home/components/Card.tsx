@@ -146,11 +146,13 @@ export default function Card({ forum, ...props }: Props) {
           />
         </div>
         <div className="flex h-full flex-1 flex-col">
-          <div className="h-4/5 border-b-2">
+          <div className="flex h-4/5 flex-col border-b-2">
             <div className="mb-6">
               <h4 className=" text-2xl font-bold">{forum.title}</h4>
             </div>
-            <p className=" text-gray-500">{forum.text}</p>
+            <p className="text-overflow-ellipsis overflow-hidden text-gray-500">
+              {forum.text}
+            </p>
           </div>
           <div className="flex flex-1 items-center justify-between space-x-2 ">
             <div className="flex space-x-2">

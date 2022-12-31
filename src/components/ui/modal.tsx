@@ -6,10 +6,17 @@ interface Props {
   open: boolean;
   setOpen: (open: boolean) => void;
   children: React.ReactNode;
-  size: string;
+  size?: string;
+  alignment?: string;
 }
 
-export default function Modal({ open, setOpen, children, size }: Props) {
+export default function Modal({
+  open,
+  setOpen,
+  children,
+  size,
+  alignment,
+}: Props) {
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10 " onClose={setOpen}>
@@ -26,7 +33,12 @@ export default function Modal({ open, setOpen, children, size }: Props) {
         </Transition.Child>
 
         <div className="fixed inset-0 z-10 overflow-y-auto">
-          <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <div
+            className={clsx(
+              "flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0 ",
+              alignment
+            )}
+          >
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"

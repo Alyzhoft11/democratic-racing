@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import type { ComponentProps } from "react";
 
 interface Props extends ComponentProps<"button"> {
@@ -6,7 +7,10 @@ interface Props extends ComponentProps<"button"> {
 
 export default function Button({ children, ...props }: Props) {
   return (
-    <button className=" rounded-md bg-green-400 p-4 shadow-lg" {...props}>
+    <button
+      className={clsx("rounded-md bg-green-400 p-2 shadow-lg", props.className)}
+      // {...props}
+    >
       {children}
     </button>
   );
